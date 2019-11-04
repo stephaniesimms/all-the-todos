@@ -1,0 +1,83 @@
+body {
+  background: #108dc7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ef8e38, #108dc7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ef8e38, #108dc7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+  font-family: Roboto;
+}
+
+#container {
+  width: 400px;
+  display: flex; 
+  justify-content: center;
+  flex-direction: column;
+  margin: 100px auto;
+} 
+
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+form {
+  background-color:  #f7f7f7;
+}
+
+input {
+  font-size: 1.3em;
+  background-color: #f7f7f7;
+  width: 330px;
+  padding: 13px;
+  box-sizing: border-box;
+  border: none;
+  outline: 0;
+}
+
+input:focus {
+  background-color: #fff;
+}
+
+button {
+  float: right;
+  font-size: 1.3em;
+  color: #53BDFF;
+  background-color:#f7f7f7;
+  outline: 0;
+  border: none;
+  padding: 13px;
+}
+
+#taskList {
+  background-color: #f7f7f7;
+  margin-top: 20px;
+  padding: 13px;
+  /* display: none; */
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  border-bottom: 1px solid #53BDFF;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  font-size: 1.3em;
+  color: #2f4f4f;
+}
+
+a {
+  float: right;
+  color: #ff6161;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.delete {
+  background-color: #ff6161;
+  padding: 0px 3px 0px 3px;
+  color: #fff;
+  cursor: pointer;
+}

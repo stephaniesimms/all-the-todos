@@ -24,7 +24,7 @@ const submit = (evt) => {
 
 const addTask = (task) => {
   let taskList = document.querySelector('ul');
-  let listItem = document.querySelector('li');
+  let listItem = document.createElement('li');
   
   listItem.innerHTML = `<span class="delete"><i class="fa fa-trash-alt"></i></span>
           <input type="checkbox"><label>${task}</label>`;

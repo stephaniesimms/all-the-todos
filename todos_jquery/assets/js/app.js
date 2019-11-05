@@ -12,17 +12,6 @@
 //   document.querySelector('ul').addEventListener('click', deleteOrMark);
 // }
 
-// submit the form with new tasks input
-// const submitForm = (evt) => {
-//   evt.preventDefault();
-//   let newTask = document.querySelector('#newTask');
-  
-//   if (newTask.value !== '') {
-//     addTask(newTask.value);
-//   }
-//   newTask.value = '';
-// }
-
 $('form').submit(function(evt) {
   evt.preventDefault();
   let newTask = $('#newTask').val();
@@ -39,12 +28,15 @@ function addTask(task) {
 }
 
 $('#clearList').click(function() {
-  console.log("clearing")
   $('ul').empty();
   hideList();
-})
+});
 
 // hide the list of tasks
+function hideList() {
+  $('#tasks').hide();
+}
+
 // const hideList = () => {
 //   document.querySelector('#tasks').style.display = 'none';
 // }

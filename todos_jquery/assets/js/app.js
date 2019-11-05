@@ -12,6 +12,7 @@
 //   document.querySelector('ul').addEventListener('click', deleteOrMark);
 // }
 
+// submit the form with new tasks input
 $('form').submit(function(evt) {
   evt.preventDefault();
   let newTask = $('#newTask').val();
@@ -21,12 +22,14 @@ $('form').submit(function(evt) {
   this.reset();
 })
 
+// add the new task to the task list
 function addTask(task) {
-  $('ul').append(`<i class="delete fa fa-trash-alt"></i>
-           <input type="checkbox"><label>${task}</label>`);
+  $('ul').append(`<li><i class="delete fa fa-trash-alt"></i>
+           <input type="checkbox"><label>${task}</label></li>`);
   $('#tasks').show();
 }
 
+// clear/reset the list of tasks
 $('#clearList').click(function() {
   $('ul').empty();
   hideList();
@@ -37,12 +40,22 @@ function hideList() {
   $('#tasks').hide();
 }
 
-// const hideList = () => {
-//   document.querySelector('#tasks').style.display = 'none';
-// }
+
 
 // FIXME: handle TypeError from clicking on li, outside trash can or checkbox 
 // handle deleting or marking a task depending on where user clicks
+
+$('ul').on('click', 'li', function(evt) {
+  console.log(evt.target)
+  if (evt.target.tagName.toLowerCase() === 'i') {
+    deleteTask(evt.target.parentNode);
+  } else if (evt.target.tagName.toLowerCase() === 'input') {
+    markTask(evt)
+  // } else {
+  //   evt.stopPropagation();
+  }
+})
+
 // const deleteOrMark = (evt) => {
 //   if (evt.target.tagName.toLowerCase() === 'i') {
 //     deleteTask(evt.target.parentNode); // delete entire li 
@@ -52,14 +65,14 @@ function hideList() {
 // }
 
 // delete a task
-// const deleteTask = (taskNode) => {
-//   taskNode.remove();
-//   // if deleting last item in list, hide list
-//   let list = document.querySelector('ul');
-//   if (list.childNodes.length <= 1) {
-//     hideList();
-//   }
-// }
+function deleteTask(taskNode) {
+  taskNode.remove();
+  // if deleting last item in list, hide list
+  let list = $('ul');
+  if (list.children().length === 0) {
+    hideList();
+  }
+}
 
 // toggle checkbox to mark and unmark a task as done
 // const markTask = (evt) => {

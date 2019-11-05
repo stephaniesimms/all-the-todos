@@ -38,16 +38,11 @@ function addTask(task) {
   $('#tasks').show();
 }
 
-$('#clear').click(function() {
-
+$('#clearList').click(function() {
+  console.log("clearing")
+  $('ul').empty();
+  hideList();
 })
-
-// clear/reset the list of tasks
-// const clearList = () => {
-//   let listToClear = document.querySelector('ul');
-//   listToClear.innerHTML = '';
-//   hideList();
-// }
 
 // hide the list of tasks
 // const hideList = () => {

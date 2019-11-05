@@ -9,10 +9,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 const loadEvents = () => {
-  document.querySelector('form').addEventListener('submit', submit);
+  document.querySelector('form').addEventListener('submit', submitForm);
+  document.querySelector('#clearList').addEventListener('click', clearList);
 }
 
-const submit = (evt) => {
+const submitForm = (evt) => {
   evt.preventDefault();
   let newTask = document.querySelector('#newTask');
   
@@ -30,4 +31,10 @@ const addTask = (task) => {
           <input type="checkbox"><label>${task}</label>`;
   taskList.appendChild(listItem);
   document.querySelector('#tasks').style.display = 'block';
+}
+
+const clearList = (evt) => {
+  let listToClear = document.querySelector('ul');
+  listToClear.innerHTML = '';
+  document.querySelector('#tasks').style.display = 'none';
 }

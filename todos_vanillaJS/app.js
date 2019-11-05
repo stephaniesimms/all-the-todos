@@ -1,6 +1,4 @@
-// mark a todo as completed w/ strikethrough when user clicks checkbox
-// delete a todo when user clicks trash can
-
+/* Todo List app */
 
 window.addEventListener('DOMContentLoaded', (event) => {
   console.log('DOM fully loaded and parsed');
@@ -36,14 +34,19 @@ const addTask = (task) => {
   document.querySelector('#tasks').style.display = 'block';
 }
 
-// clear/reset the list of tasks and hide it
+// clear/reset the list of tasks
 const clearList = () => {
   let listToClear = document.querySelector('ul');
   listToClear.innerHTML = '';
+  hideList();
+}
+
+// hide the list of tasks
+const hideList = () => {
   document.querySelector('#tasks').style.display = 'none';
 }
 
-// FIXME: handle TypeError from clicking outside trash can or checkbox 
+// FIXME: handle TypeError from clicking on li, outside trash can or checkbox 
 // handle deleting or marking a task depending on where user clicks
 const deleteOrMark = (evt) => {
   if (evt.target.tagName.toLowerCase() === 'i') {
@@ -53,10 +56,14 @@ const deleteOrMark = (evt) => {
   }
 }
 
+// delete a task
 const deleteTask = (taskNode) => {
   taskNode.remove();
-  // TODO: add check to see if that's the last item
-  // if so hide list
+  // if deleting last item in list, hide list
+  let list = document.querySelector('ul');
+  if (list.childNodes.length <= 1) {
+    hideList();
+  }
 }
 
 // toggle checkbox to mark and unmark a task as done

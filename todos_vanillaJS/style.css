@@ -25,7 +25,7 @@ form {
   background-color:  #f7f7f7;
 }
 
-input {
+input[type="text"] {
   font-size: 1.3em;
   background-color: #f7f7f7;
   width: 330px;
@@ -52,32 +52,45 @@ button {
 #taskList {
   background-color: #f7f7f7;
   margin-top: 20px;
-  padding: 13px;
+  padding: 10px 40px 10px 40px;
   /* display: none; */
 }
 
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 li {
   border-bottom: 1px solid #53BDFF;
-  padding-bottom: 15px;
-  padding-top: 15px;
+  padding: 15px 0 15px 0;
   font-size: 1.3em;
   color: #2f4f4f;
 }
 
-a {
+#clearList {
   float: right;
+  padding-top: 10px; 
   color: #ff6161;
   font-size: 1.3em;
   cursor: pointer;
 }
 
 .delete {
-  background-color: #ff6161;
-  padding: 0px 3px 0px 3px;
-  color: #fff;
+  color: #ff6161;
   cursor: pointer;
+}
+
+@media (max-width: 320px) {
+  #container {
+    margin: auto;
+    width: 100%;
+  }
+  input[type="text"] {
+    width: 80%;
+  }
+  button {
+    width: 20%;
+  }
 }

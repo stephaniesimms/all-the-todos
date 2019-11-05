@@ -4,6 +4,6 @@ A series of simple todo list apps to review basic frontend concepts and technolo
 
 ## Meta todo list
 - [x] vanilla JavaScript
-- [ ] jQuery
+- [x] jQuery
 - [ ] react
 - [ ] react hooks

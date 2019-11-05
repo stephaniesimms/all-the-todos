@@ -46,12 +46,11 @@ const hideList = () => {
   document.querySelector('#tasks').style.display = 'none';
 }
 
-// FIXME: handle TypeError from clicking on li, outside trash can or checkbox 
 // handle deleting or marking a task depending on where user clicks
 const deleteOrMark = (evt) => {
   if (evt.target.tagName.toLowerCase() === 'i') {
     deleteTask(evt.target.parentNode); // delete entire li 
-  } else {
+  } else if (evt.target.tagName.toLowerCase() === 'input') {
     markTask(evt); 
   }
 }

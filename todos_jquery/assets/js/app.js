@@ -40,29 +40,14 @@ function hideList() {
   $('#tasks').hide();
 }
 
-
-
-// FIXME: handle TypeError from clicking on li, outside trash can or checkbox 
 // handle deleting or marking a task depending on where user clicks
-
 $('ul').on('click', 'li', function(evt) {
-  console.log(evt.target)
   if (evt.target.tagName.toLowerCase() === 'i') {
     deleteTask(evt.target.parentNode);
   } else if (evt.target.tagName.toLowerCase() === 'input') {
-    markTask(evt)
-  // } else {
-  //   evt.stopPropagation();
+    markTask(evt.target)
   }
 })
-
-// const deleteOrMark = (evt) => {
-//   if (evt.target.tagName.toLowerCase() === 'i') {
-//     deleteTask(evt.target.parentNode); // delete entire li 
-//   } else {
-//     markTask(evt); 
-//   }
-// }
 
 // delete a task
 function deleteTask(taskNode) {
@@ -75,13 +60,7 @@ function deleteTask(taskNode) {
 }
 
 // toggle checkbox to mark and unmark a task as done
-// const markTask = (evt) => {
-//   const task = evt.target.nextSibling;
-//   if (evt.target.checked) {
-//     task.style.textDecoration = 'line-through';
-//     task.style.color = '#ff0000';
-//   } else {
-//     task.style.textDecoration = 'none';
-//     task.style.color = '#2f4f4f';
-//   }
-// }
+function markTask(check) {
+  const task = $(check.nextSibling);
+  task.toggleClass('checked');
+}

@@ -43,12 +43,13 @@ const clearList = () => {
   document.querySelector('#tasks').style.display = 'none';
 }
 
-
+// FIXME: handle TypeError from clicking outside trash can or checkbox 
+// handle deleting or marking a task depending on where user clicks
 const deleteOrMark = (evt) => {
   if (evt.target.tagName.toLowerCase() === 'i') {
-    deleteTask(evt.target.parentNode);
+    deleteTask(evt.target.parentNode); // delete entire li 
   } else {
-    markTask(evt.target.nextSibling);
+    markTask(evt); 
   }
 }
 
@@ -58,6 +59,14 @@ const deleteTask = (taskNode) => {
   // if so hide list
 }
 
-const markTask = (taskNode) => {
-  console.log('mark task event')
+// toggle checkbox to mark and unmark a task as done
+const markTask = (evt) => {
+  const task = evt.target.nextSibling;
+  if (evt.target.checked) {
+    task.style.textDecoration = 'line-through';
+    task.style.color = '#ff0000';
+  } else {
+    task.style.textDecoration = 'none';
+    task.style.color = '#2f4f4f';
+  }
 }

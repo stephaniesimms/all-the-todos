@@ -1,9 +1,9 @@
 /* Todo List app */
 
-// window.addEventListener('DOMContentLoaded', (event) => {
-//   console.log('DOM fully loaded and parsed');
-//   loadEvents();
-// });
+$('window').ready(function(evt) {
+  console.log('DOM fully loaded and parsed');
+  loadEvents();
+});
 
 // load all event listeners
 // const loadEvents = () => {

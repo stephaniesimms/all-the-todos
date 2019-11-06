@@ -7,3 +7,5 @@ A series of simple todo list apps to review basic frontend concepts and technolo
 - [x] jQuery
 - [ ] react
 - [ ] react hooks
+
+- [ ] use localStorage to save list

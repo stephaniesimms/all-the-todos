@@ -21,7 +21,7 @@ class NewTodoForm extends Component {
       id: uuid(),
       task: this.state.task
     };
-    this.props.createTodo(newTodoObj);
+    this.props.create(newTodoObj);
 
     // reset form
     this.setState({ 
@@ -31,16 +31,19 @@ class NewTodoForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className='my-4' onSubmit={this.handleSubmit}>
+          <div className='input-group'>
           <label htmlFor='task'>Task:</label>
           <input
             id='task'
             name='task'
             type='text'
+            className='form-control'
             value={this.state.task}
             onChange={this.handleChange}
           />
           <button>ADD</button>
+        </div>
       </form>
     );
   }

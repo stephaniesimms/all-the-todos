@@ -65,7 +65,7 @@ class TodoList extends Component {
       <div className='container text-center mt-5'>
         <h4>TO-DO LIST</h4>
         <NewTodoForm create={this.createTodo} />
-        <ul>{todos}</ul>
+        <ul className='list-group'>{todos}</ul>
       </div>
     )
   }

@@ -2,7 +2,7 @@
 
 $('window').ready(function(evt) {
   console.log('DOM fully loaded and parsed');
-  loadEvents();
+  // loadEvents();
 });
 
 // load all event listeners

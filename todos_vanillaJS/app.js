@@ -68,11 +68,5 @@ const deleteTask = (taskNode) => {
 // toggle checkbox to mark and unmark a task as done
 const markTask = (evt) => {
   const task = evt.target.nextSibling;
-  if (evt.target.checked) {
-    task.style.textDecoration = 'line-through';
-    task.style.color = '#ff0000';
-  } else {
-    task.style.textDecoration = 'none';
-    task.style.color = '#2f4f4f';
-  }
+  task.classList.toggle('checked');
 }

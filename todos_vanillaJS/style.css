@@ -82,6 +82,11 @@ li {
   cursor: pointer;
 }
 
+.checked {
+  text-decoration: line-through;
+  color: #ff0000;
+}
+
 @media (max-width: 320px) {
   #container {
     margin: auto;

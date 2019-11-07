@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <li
+    className="list-group-item"
+  >
+    <button
+      className="border-0 bg-white box-shadow-none"
+      onClick={[Function]}
+    >
+      <i
+        className="fa fa-pencil text-primary box-shadow-none"
+      />
+    </button>
+    <button
+      className="border-0 bg-white shadow-none"
+      onClick={[Function]}
+    >
+      <i
+        class="fa fa-trash text-danger"
+      />
+    </button>
+  </li>
+</div>
+`;

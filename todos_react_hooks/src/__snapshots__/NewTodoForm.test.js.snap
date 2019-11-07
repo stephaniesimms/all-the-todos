@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<form
+  className="my-4"
+  onSubmit={[Function]}
+>
+  <div
+    className="input-group"
+  >
+    <label
+      htmlFor="task"
+    >
+      Task:
+    </label>
+    <input
+      className="form-control"
+      id="task"
+      name="task"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <button>
+      ADD
+    </button>
+  </div>
+</form>
+`;

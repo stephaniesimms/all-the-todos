@@ -5,7 +5,7 @@ A series of simple todo list apps to review basic frontend concepts and technolo
 ## Meta todo list
 - [x] vanilla JavaScript
 - [x] jQuery
-- [ ] react
+- [x] react class components
 - [ ] react hooks
 
 - [ ] use localStorage to save list

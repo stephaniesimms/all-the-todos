@@ -1,52 +1,35 @@
-import React, { Component } from 'react';
-import uuid from 'uuid/v4';
+import React, { useState } from 'react';
 
-class NewTodoForm extends Component {
-  state = {
-    task: ''
-  };
+function NewTodoForm({ create }) {
+  const [value, setValue] = useState('');
 
-  handleChange = (evt) => {
-    this.setState({
-      [evt.target.name]: evt.target.value
-    });
-  };
-
-  handleSubmit = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
-    // prevent empty submission
-    if (this.state.task === '') return;
 
-    let newTodoObj = {
-      id: uuid(),
-      task: this.state.task
-    };
-    this.props.create(newTodoObj);
+    // prevent empty submission
+    if (!value) return;
+    create(value);
 
     // reset form
-    this.setState({ 
-      task: '' 
-    });
+    setValue('');
   }
 
-  render() {
-    return (
-      <form className='my-4' onSubmit={this.handleSubmit}>
-          <div className='input-group'>
-          <label htmlFor='task'>Task:</label>
-          <input
-            id='task'
-            name='task'
-            type='text'
-            className='form-control'
-            value={this.state.task}
-            onChange={this.handleChange}
-          />
-          <button>ADD</button>
-        </div>
-      </form>
-    );
-  }
+  return (
+    <form className='my-4' onSubmit={handleSubmit}>
+      <div className='input-group'>
+        <label htmlFor='task'>Task:</label>
+        <input
+          id='task'
+          name='task'
+          type='text'
+          className='form-control'
+          value={value}
+          onChange={evt => setValue(evt.target.value)}
+        />
+        <button>ADD</button>
+      </div>
+    </form>
+  );
 }
 
 export default NewTodoForm;

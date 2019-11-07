@@ -15,15 +15,13 @@ const loadEvents = () => {
 
 // retrieve from localStorage
 const storedTodos = () => {
-  console.log('I ran to retrieve todos')
   let taskList = document.querySelector('ul');
   let savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  console.log(savedTasks)
+
   for (let i = 0; i < savedTasks.length; i++) {
     let newTask = document.createElement('li');
     newTask.innerHTML = `<i class="delete fa fa-trash-alt"></i>
           <input type="checkbox"><label>${savedTasks[i].task}</label>`;
-    console.log(newTask)
     taskList.appendChild(newTask);
   }
   if (taskList.childNodes.length > 1) {
@@ -42,6 +40,8 @@ const submitForm = (evt) => {
   newTask.value = '';
 }
 
+// TODO: add a unique id for each task
+// TODO: add a checked: false flag for each task
 // add the new task to the task list and save to localStorage
 const addTask = (task) => {
   let taskList = document.querySelector('ul');
@@ -83,9 +83,11 @@ const deleteOrMark = (evt) => {
 // delete a task
 const deleteTask = (taskNode) => {
   taskNode.remove();
+  console.log("taskNode", taskNode)
   
-  // TODO: delete from localStorage too
-  
+  // TODO: delete from localStorage too, need to generate an id and filter on that
+  let savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
   // if deleting last item in list, hide list
   let list = document.querySelector('ul');
   if (list.childNodes.length <= 1) {

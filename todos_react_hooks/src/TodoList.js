@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import NewTodoForm from './NewTodoForm';
 import Todo from './Todo';
-// import uuid from 'uuid/v4';
-
+import uuid from 'uuid/v4';
 
 /* 
 todos: [
@@ -17,60 +16,52 @@ todos: [
 ]
 */
 
-class TodoList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: []
-    };
-    this.createTodo = this.createTodo.bind(this);
-    this.deleteTodo = this.deleteTodo.bind(this);
-    this.updateTodo = this.updateTodo.bind(this);
+function TodoList() {
+  const [todos, setTodos] = useState([])
+
+  const createTodo = task => {
+    let newTodo = {
+      id: uuid(),
+      task: task
+    }
+    let updatedList = [...todos, newTodo]
+    setTodos(updatedList);
   }
 
-  createTodo(newTask) {
-    this.setState({
-      todos: [...this.state.todos, newTask]
-    });
+  const deleteTodo = id => {
+    let updatedList = todos.filter(todo => todo.id !== id);
+    setTodos(updatedList);
   }
 
-  deleteTodo(id) {
-    this.setState({
-      todos: this.state.todos.filter(todo => todo.id !== id)
-    });
-  }
-
-  updateTodo(id, updatedTask){
-    const updatedTodos = this.state.todos.map(todo => {
+  const updateTodo = (id, updatedTask) => {
+    let updatedList = todos.map(todo => {
       if (todo.id === id) {
         return { ...todo, task: updatedTask };
       }
       return todo;
     });
-    this.setState({
-      todos: updatedTodos
-    });
+    setTodos(updatedList);
   }
 
-  render() {
-    const todos = this.state.todos.map(todo => (
-      <Todo
-        key={todo.id}
-        id={todo.id}
-        task={todo.task}
-        update={this.updateTodo}
-        delete={this.deleteTodo}
-      />
-    ));
+  // iterate through all todos and create Todo components
+  const todosList = todos.map(todo => (
+    <Todo
+      key={todo.id}
+      id={todo.id}
+      task={todo.task}
+      update={updateTodo}
+      delete={deleteTodo}
+    />
+  ));
 
-    return (
-      <div className='container text-center mt-5'>
-        <h4>TO-DO LIST</h4>
-        <NewTodoForm create={this.createTodo} />
-        <ul className='list-group'>{todos}</ul>
-      </div>
-    )
-  }
+  return (
+    <div className='container text-center mt-5'>
+      <h4>TO-DO LIST</h4>
+      <NewTodoForm create={createTodo} />
+      <ul className='list-group'>{todosList}</ul>
+    </div>
+  )
 }
+
 
 export default TodoList;

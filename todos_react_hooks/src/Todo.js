@@ -21,7 +21,7 @@ function Todo({ id, task, remove, update }) {
           <button className="border-0 bg-white box-shadow-none" onClick={() => setIsEditing(!isEditing)}>
             <i className="fa fa-pencil text-primary box-shadow-none"></i>
           </button>
-          <button className="border-0 bg-white shadow-none" onClick={remove}>
+        <button className="border-0 bg-white shadow-none" onClick={() => remove(id)}>
             <i class="fa fa-trash text-danger"></i>
           </button>
           {task}

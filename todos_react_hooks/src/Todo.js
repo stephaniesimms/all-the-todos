@@ -1,69 +1,50 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class Todo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      task: this.props.task,
-      isEditing: false
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
-    this.toggleEdit = this.toggleEdit.bind(this);
-  }
+function Todo({ id, task, remove, update }) {
+  const [value, setValue] = useState(task);
+  const [isEditing, setIsEditing] = useState(false);
 
-  handleChange(evt) {
-    this.setState({ task: evt.target.value });
-  }
-
-  handleDelete() {
-    this.props.delete(this.props.id);
-  }
-
-  handleUpdate(evt) {
+  const handleUpdate = (evt) => {
     evt.preventDefault();
-    this.props.update(this.props.id, this.state.task);
-    this.setState({
-      isEditing: false
-    });
+    update(id, value);
+
+    // this.props.update(this.props.id, this.state.task);
+    // this.setState({
+    //   isEditing: false
+    // });
   }
 
-  toggleEdit() {
-    this.setState({ isEditing: !this.state.isEditing });
-  }
-
-  render() {
-    let todoDisplay = (
+  return (
+    // let todoDisplay = (
       <div>
         <li className='list-group-item'>
-          <button className="border-0 bg-white box-shadow-none" onClick={this.toggleEdit}>
+          <button className="border-0 bg-white box-shadow-none" onClick={() => setIsEditing(!isEditing)}>
             <i className="fa fa-pencil text-primary box-shadow-none"></i>
           </button>
-          <button className="border-0 bg-white shadow-none" onClick={this.handleDelete}>
+          <button className="border-0 bg-white shadow-none" onClick={remove}>
             <i class="fa fa-trash text-danger"></i>
           </button>
-          {this.props.task}
+          {task}
         </li>
       </div>
     );
 
-    if (this.state.isEditing) {
-      todoDisplay = (
-        <div>
-          <form onSubmit={this.handleUpdate}>
-            <input
-              type='text'
-              value={this.state.task}
-              onChange={this.handleChange}
-            />
-            <button>Submit</button>
-          </form>
-        </div>
-      );
-    }
-    return todoDisplay;
-  }
+  // if (isEditing) {
+  //   todoDisplay = (
+  //     <div>
+  //       <form onSubmit={handleUpdate}>
+  //         <input
+  //           type='text'
+  //           value={value}
+  //           onChange={evt => setValue(evt.target.value)}
+  //         />
+  //         <button>Submit</button>
+  //       </form>
+  //     </div>
+  //   );
+  // }
+  // return todoDisplay;
+  // )
 }
 
 export default Todo;

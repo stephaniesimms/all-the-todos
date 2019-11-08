@@ -50,7 +50,7 @@ function TodoList() {
       id={todo.id}
       task={todo.task}
       update={updateTodo}
-      delete={deleteTodo}
+      remove={deleteTodo}
     />
   ));
 

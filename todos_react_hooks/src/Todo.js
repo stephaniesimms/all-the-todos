@@ -7,44 +7,36 @@ function Todo({ id, task, remove, update }) {
   const handleUpdate = (evt) => {
     evt.preventDefault();
     update(id, value);
-
-    // this.props.update(this.props.id, this.state.task);
-    // this.setState({
-    //   isEditing: false
-    // });
+    setIsEditing(!isEditing);
   }
 
   return (
-    // let todoDisplay = (
-      <div>
-        <li className='list-group-item'>
-          <button className="border-0 bg-white box-shadow-none" onClick={() => setIsEditing(!isEditing)}>
-            <i className="fa fa-pencil text-primary box-shadow-none"></i>
-          </button>
-        <button className="border-0 bg-white shadow-none" onClick={() => remove(id)}>
-            <i class="fa fa-trash text-danger"></i>
-          </button>
-          {task}
-        </li>
-      </div>
-    );
+    <div>
+      {isEditing ? (
+        <div>
+          <form onSubmit={handleUpdate}>
+            <input
+              type='text'
+              value={value}
+              onChange={evt => setValue(evt.target.value)}
+            />
+            <button>Submit</button>
+          </form>
+        </div>
+      ) : (
+          <li className='list-group-item'>
+            <button className="border-0 bg-white box-shadow-none" onClick={() => setIsEditing(!isEditing)}>
+              <i className="fa fa-pencil text-primary box-shadow-none"></i>
+            </button>
+            <button className="border-0 bg-white shadow-none" onClick={() => remove(id)}>
+              <i className="fa fa-trash text-danger"></i>
+            </button>
+            {task}
+          </li>
 
-  // if (isEditing) {
-  //   todoDisplay = (
-  //     <div>
-  //       <form onSubmit={handleUpdate}>
-  //         <input
-  //           type='text'
-  //           value={value}
-  //           onChange={evt => setValue(evt.target.value)}
-  //         />
-  //         <button>Submit</button>
-  //       </form>
-  //     </div>
-  //   );
-  // }
-  // return todoDisplay;
-  // )
+        )}
+    </div>
+  );
 }
 
 export default Todo;

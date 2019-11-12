@@ -10,6 +10,7 @@ function Todo({ id, task, remove, update }) {
     setIsEditing(!isEditing);
   }
 
+  // if user clicks pen to edit todo, render UI appropriately
   return (
     <div>
       {isEditing ? (
